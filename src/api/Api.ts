@@ -2,9 +2,10 @@ import express, { json } from 'express';
 import swaggerUi from 'swagger-ui-express';
 
 import IRegistry from '../infra/registry/IRegistry';
+import ProductOrderRouter from './product-order/ProductOrderRouter';
 
 export default class Api {
-  constructor(registry: IRegistry, port: number) {
+  constructor(registry: IRegistry, port = 3000) {
     const server = express();
 
     server.use(json());
@@ -12,6 +13,8 @@ export default class Api {
     const swaggerOptions = registry.get('swagger').options;
 
     server.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerOptions));
+
+    server.use('/product-orders', new ProductOrderRouter(registry).router);
 
     server.listen(port, () => {
       const logger = registry.get('logger');

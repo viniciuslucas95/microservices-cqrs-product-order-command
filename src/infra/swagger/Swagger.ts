@@ -14,13 +14,13 @@ export default class Swagger implements ISwagger {
       definition: {
         openapi: '3.0.0',
         info: {
-          title: 'Product Order Command',
+          title: 'Product Order CommandQueryBase',
           version: '1.0.0',
-          description: 'Product Order Command API documentation',
+          description: 'Product Order CommandQueryBase API documentation',
         },
         servers: [
           {
-            url: `http://localhost:${apiPort}/swagger`,
+            url: `http://localhost:${apiPort}`,
           },
         ],
       },
