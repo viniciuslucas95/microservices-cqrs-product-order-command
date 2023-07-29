@@ -28,7 +28,7 @@ export default class Registry implements IRegistry {
       swagger: new Swagger(apiPort),
       orderProductCommandHandler: new OrderProductCommandHandler(this),
       productOrderController: new ProductOrderController(this),
-      productOrderedExchangePublish: new ProductOrderedExchangePublisher(
+      productOrderedExchangePublisher: new ProductOrderedExchangePublisher(
         messageBrokerHost,
         messageBrokerPort,
         messageBrokerUsername,

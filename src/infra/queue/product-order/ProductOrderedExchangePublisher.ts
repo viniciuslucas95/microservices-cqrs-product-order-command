@@ -1,10 +1,10 @@
 import ExchangePublisherBase from '../shared/ExchangePublisherBase';
 import ProductOrderedEvent from '../../../application/order-product/order/ProductOrderedEvent';
-import IProductOrderedExchangePublish from '../../../application/order-product/order/IProductOrderedExchangePublish';
+import IProductOrderedExchangePublisher from '../../../application/order-product/order/IProductOrderedExchangePublisher';
 
 export default class ProductOrderedExchangePublisher
   extends ExchangePublisherBase<ProductOrderedEvent>
-  implements IProductOrderedExchangePublish
+  implements IProductOrderedExchangePublisher
 {
   constructor(
     host?: string,

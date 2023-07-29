@@ -25,7 +25,7 @@ export default class OrderProductCommandHandler
       entity.userId,
       entity.date,
     );
-    const exchange = this.registry.get('productOrderedExchangePublish');
+    const exchange = this.registry.get('productOrderedExchangePublisher');
     await exchange.publish(event);
 
     return new OrderProductDto(entity.id);

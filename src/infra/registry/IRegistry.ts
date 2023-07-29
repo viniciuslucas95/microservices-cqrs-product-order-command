@@ -2,7 +2,7 @@ import ILogger from '../logger/ILogger';
 import ISwagger from '../swagger/ISwagger';
 import IOrderProductCommandHandler from '../../application/order-product/order/IOrderProductCommandHandler';
 import IProductOrderController from '../../api/product-order/IProductOrderController';
-import IProductOrderedExchangePublish from '../../application/order-product/order/IProductOrderedExchangePublish';
+import IProductOrderedExchangePublisher from '../../application/order-product/order/IProductOrderedExchangePublisher';
 import IProductOrderRepository from '../../application/order-product/IProductOrderRepository';
 
 export type Registries = {
@@ -10,7 +10,7 @@ export type Registries = {
   swagger: ISwagger;
   orderProductCommandHandler: IOrderProductCommandHandler;
   productOrderController: IProductOrderController;
-  productOrderedExchangePublish: IProductOrderedExchangePublish;
+  productOrderedExchangePublisher: IProductOrderedExchangePublisher;
   productOrderRepository: IProductOrderRepository;
 };
 
