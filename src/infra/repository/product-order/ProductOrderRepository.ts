@@ -10,7 +10,7 @@ export default class ProductOrderRepository
   public override readonly name = 'product_orders';
 
   async createOrUpdate(entity: ProductOrderEntity) {
-    const existingModel = await this.getById(entity.id);
+    const existingModel = await this.findById(entity.id);
 
     if (existingModel) {
       await this.query(`UPDATE "${this.name}" SET status = $2 WHERE id = $1`, [
@@ -26,7 +26,7 @@ export default class ProductOrderRepository
     );
   }
 
-  public async getById(id: string) {
+  public async findById(id: string) {
     const results = await this.query<ProductOrderModel>(
       `SELECT * FROM "${this.name}" WHERE id = $1`,
       [id],

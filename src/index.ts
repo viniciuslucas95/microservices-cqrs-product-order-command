@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 
 import Api from './api/Api';
 import Registry from './infra/registry/Registry';
+import ProductOrderPaymentStatusUpdatedQueueConsumer from './infra/queue/product-order-payment/ProductOrderPaymentStatusUpdatedQueueConsumer';
 
 dotenv.config();
 
@@ -42,18 +43,25 @@ if (databasePortEnv) {
   if (databasePort < 1) throw new Error('DATABASE_PORT cannot be lower than 1');
 }
 
-new Api(
-  new Registry(
-    apiPort,
-    databaseHostEnv,
-    databasePort,
-    databaseUsernameEnv,
-    databasePasswordEnv,
-    databaseNameEnv,
-    messageBrokerHostEnv,
-    messageBrokerPort,
-    messageBrokerUsernameEnv,
-    messageBrokerPasswordEnv,
-  ),
-  apiPort ?? 3001,
-).startListening();
+const registry = new Registry(
+  apiPort,
+  databaseHostEnv,
+  databasePort,
+  databaseUsernameEnv,
+  databasePasswordEnv,
+  databaseNameEnv,
+  messageBrokerHostEnv,
+  messageBrokerPort,
+  messageBrokerUsernameEnv,
+  messageBrokerPasswordEnv,
+);
+
+new Api(registry, apiPort ?? 3001).startListening();
+
+new ProductOrderPaymentStatusUpdatedQueueConsumer(
+  registry,
+  messageBrokerHostEnv,
+  messageBrokerPort,
+  messageBrokerUsernameEnv,
+  messageBrokerPasswordEnv,
+).startConsuming();

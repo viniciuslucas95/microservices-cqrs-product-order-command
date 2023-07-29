@@ -7,6 +7,7 @@ import OrderProductCommandHandler from '../../application/order-product/order/Or
 import ProductOrderController from '../../api/product-order/ProductOrderController';
 import ProductOrderedExchangePublisher from '../queue/product-order/ProductOrderedExchangePublisher';
 import ProductOrderRepository from '../repository/product-order/ProductOrderRepository';
+import UpdateProductOrderStatusCommandHandler from '../../application/order-product/update-status/UpdateProductOrderStatusCommandHandler';
 
 export default class Registry implements IRegistry {
   private readonly _singletons: Registries;
@@ -43,6 +44,8 @@ export default class Registry implements IRegistry {
           database: databaseName,
         }),
       ),
+      updateProductOrderPaymentCommandHandler:
+        new UpdateProductOrderStatusCommandHandler(this),
     };
   }
 

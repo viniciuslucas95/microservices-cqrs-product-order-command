@@ -4,6 +4,7 @@ import IOrderProductCommandHandler from '../../application/order-product/order/I
 import IProductOrderController from '../../api/product-order/IProductOrderController';
 import IProductOrderedExchangePublisher from '../../application/order-product/order/IProductOrderedExchangePublisher';
 import IProductOrderRepository from '../../application/order-product/IProductOrderRepository';
+import IUpdateProductOrderStatusCommandHandler from '../../application/order-product/update-status/IUpdateProductOrderStatusCommandHandler';
 
 export type Registries = {
   logger: ILogger;
@@ -12,6 +13,7 @@ export type Registries = {
   productOrderController: IProductOrderController;
   productOrderedExchangePublisher: IProductOrderedExchangePublisher;
   productOrderRepository: IProductOrderRepository;
+  updateProductOrderPaymentCommandHandler: IUpdateProductOrderStatusCommandHandler;
 };
 
 export default interface IRegistry {
