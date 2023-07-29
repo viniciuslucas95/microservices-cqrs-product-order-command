@@ -1,5 +1,5 @@
 import RepositoryBase from '../shared/RepositoryBase';
-import IProductOrderRepository from '../../../application/order-product/IOrderProductRepository';
+import IProductOrderRepository from '../../../application/order-product/IProductOrderRepository';
 import ProductOrderEntity from '../../../domain/entities/ProductOrderEntity';
 import ProductOrderModel from './ProductOrderModel';
 

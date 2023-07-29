@@ -1,25 +1,39 @@
-import express, { json } from 'express';
+import express, { Express, json } from 'express';
 import swaggerUi from 'swagger-ui-express';
 
 import IRegistry from '../infra/registry/IRegistry';
 import ProductOrderRouter from './product-order/ProductOrderRouter';
 
 export default class Api {
-  constructor(registry: IRegistry, port = 3000) {
-    const server = express();
+  private readonly _server: Express;
 
-    server.use(json());
+  constructor(
+    private readonly _registry: IRegistry,
+    private readonly _port: number,
+  ) {
+    this._server = express();
 
-    const swaggerOptions = registry.get('swagger').options;
+    this._server.use(json());
 
-    server.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerOptions));
+    const swaggerOptions = _registry.get('swagger').options;
 
-    server.use('/product-orders', new ProductOrderRouter(registry).router);
+    this._server.use(
+      '/swagger',
+      swaggerUi.serve,
+      swaggerUi.setup(swaggerOptions),
+    );
 
-    server.listen(port, () => {
-      const logger = registry.get('logger');
+    this._server.use(
+      '/product-orders',
+      new ProductOrderRouter(_registry).router,
+    );
+  }
 
-      logger.log(`Server started at port ${port}...`);
+  startListening() {
+    this._server.listen(this._port, () => {
+      const logger = this._registry.get('logger');
+
+      logger.log(`Server started at port ${this._port}...`);
     });
   }
 }

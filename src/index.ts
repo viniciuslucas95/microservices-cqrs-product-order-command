@@ -55,5 +55,5 @@ new Api(
     messageBrokerUsernameEnv,
     messageBrokerPasswordEnv,
   ),
-  apiPort,
-);
+  apiPort ?? 3001,
+).startListening();

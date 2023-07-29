@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 
 import ControllerBase from '../shared/ControllerBase';
-import OrderProductCommand from '../../application/order-product/OrderProductCommand';
+import OrderProductCommand from '../../application/order-product/order/OrderProductCommand';
 import IProductOrderController from './IProductOrderController';
 import CommandQueryBase from '../../application/shared/CommandQueryBase';
 

@@ -1,8 +1,8 @@
 import IOrderProductCommandHandler from './IOrderProductCommandHandler';
 import OrderProductCommand from './OrderProductCommand';
 import OrderProductDto from './OrderProductDto';
-import CommandQueryHandlerBase from '../shared/CommandQueryHandlerBase';
-import ProductOrderEntity from '../../domain/entities/ProductOrderEntity';
+import CommandQueryHandlerBase from '../../shared/CommandQueryHandlerBase';
+import ProductOrderEntity from '../../../domain/entities/ProductOrderEntity';
 import ProductOrderedEvent from './ProductOrderedEvent';
 
 export default class OrderProductCommandHandler

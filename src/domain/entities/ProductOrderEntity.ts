@@ -9,7 +9,7 @@ export default class ProductOrderEntity extends EntityBase {
     public readonly productId: string,
     public readonly userId: string,
     public readonly date: Date,
-    private _status = 'reserved',
+    private _status = 'requested',
     id?: string,
   ) {
     super(id);

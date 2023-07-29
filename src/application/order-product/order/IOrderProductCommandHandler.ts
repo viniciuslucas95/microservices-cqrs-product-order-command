@@ -1,4 +1,4 @@
-import ICommandQueryHandler from '../shared/ICommandQueryHandler';
+import ICommandQueryHandler from '../../shared/ICommandQueryHandler';
 import OrderProductCommand from './OrderProductCommand';
 import OrderProductDto from './OrderProductDto';
 
