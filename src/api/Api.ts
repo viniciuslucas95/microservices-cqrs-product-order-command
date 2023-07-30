@@ -1,8 +1,10 @@
+import 'express-async-errors';
 import express, { Express, json } from 'express';
 import swaggerUi from 'swagger-ui-express';
 
 import IRegistry from '../infra/registry/IRegistry';
 import ProductOrderRouter from './product-order/ProductOrderRouter';
+import ExceptionMiddleware from './middlewares/ExceptionMiddleware';
 
 export default class Api {
   private readonly _server: Express;
@@ -27,6 +29,10 @@ export default class Api {
       '/product-orders',
       new ProductOrderRouter(_registry).router,
     );
+
+    const exceptionMiddleware = new ExceptionMiddleware(this._registry);
+
+    this._server.use(exceptionMiddleware.handle.bind(exceptionMiddleware));
   }
 
   startListening() {
