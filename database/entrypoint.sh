@@ -16,7 +16,9 @@ psql -U 'admin' -d 'dev' <<- EOSQL
     );
 EOSQL
 
-psql -U 'admin' -d 'dev' -c "SELECT pg_create_physical_replication_slot('rep_slot');"
+psql -U 'admin' -d 'dev' <<- EOSQL
+	SELECT pg_create_physical_replication_slot('rep_slot');
+EOSQL
 
 pg_ctl stop -D /var/lib/postgresql/data -m fast
 
